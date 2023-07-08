@@ -34,4 +34,7 @@ testdb:
 coverhtml:
 	go tool cover -html=coverage.out
 
-PHONY: createdb dropdb migrateup migratedown postgres sqlc testdb createtestdb droptestdb migrateuptest migratedowntest coverhtml
+server:
+	go run main.go
+
+PHONY: createdb dropdb migrateup migratedown postgres sqlc testdb createtestdb droptestdb migrateuptest migratedowntest coverhtml server
