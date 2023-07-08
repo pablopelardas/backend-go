@@ -101,6 +101,15 @@ func (q *Queries) ListEntries(ctx context.Context, arg ListEntriesParams) ([]Ent
 	return items, nil
 }
 
+const resetEntries = `-- name: ResetEntries :exec
+DELETE FROM entries
+`
+
+func (q *Queries) ResetEntries(ctx context.Context) error {
+	_, err := q.db.ExecContext(ctx, resetEntries)
+	return err
+}
+
 const updateEntry = `-- name: UpdateEntry :one
 UPDATE entries SET
 amount = $2

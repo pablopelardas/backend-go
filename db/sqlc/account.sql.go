@@ -106,6 +106,15 @@ func (q *Queries) ListAccounts(ctx context.Context, arg ListAccountsParams) ([]A
 	return items, nil
 }
 
+const resetAccounts = `-- name: ResetAccounts :exec
+DELETE FROM accounts
+`
+
+func (q *Queries) ResetAccounts(ctx context.Context) error {
+	_, err := q.db.ExecContext(ctx, resetAccounts)
+	return err
+}
+
 const updateAccount = `-- name: UpdateAccount :one
 UPDATE accounts SET
 balance = $2

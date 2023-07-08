@@ -106,6 +106,15 @@ func (q *Queries) ListTransfers(ctx context.Context, arg ListTransfersParams) ([
 	return items, nil
 }
 
+const resetTransfers = `-- name: ResetTransfers :exec
+DELETE FROM transfers
+`
+
+func (q *Queries) ResetTransfers(ctx context.Context) error {
+	_, err := q.db.ExecContext(ctx, resetTransfers)
+	return err
+}
+
 const updateTransfer = `-- name: UpdateTransfer :one
 UPDATE transfers SET
 amount = $2

@@ -24,3 +24,6 @@ RETURNING *;
 -- name: DeleteEntry :exec
 DELETE FROM entries
 WHERE id = $1;
+
+-- name: ResetEntries :exec
+DELETE FROM entries;
