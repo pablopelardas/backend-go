@@ -49,7 +49,7 @@ jobs:
         which migrate
 
     - name: Run migration
-      run: make migrateuptest
+      run: migrate -path db/migration -database "postgresql://root:test@localhost:5432/gopg-db-test?sslmode=disable" -verbose up
 
     - name: Test
       run: make testdb
