@@ -20,7 +20,7 @@ migratedowntest:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/gopg-db-test?sslmode=disable" -verbose down
 
 migrateup:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/gopg-db?sslmode=disable" -verbose up 
+	migrate -path db/migration -database "postgresql://root:test@localhost:5432/gopg-db?sslmode=disable" -verbose up 
 
 migratedown:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/gopg-db?sslmode=disable" -verbose down

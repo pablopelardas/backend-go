@@ -12,7 +12,7 @@ type Config struct {
 
 type TestConfig struct {
 	DBDriver string `mapstructure:"DB_DRIVER"`
-	DBSource string `mapstructure:"DB_SOURCE_TEST"`
+	DBSource string `mapstructure:"DB_SOURCE"`
 }
 
 func LoadConfig(path string) (config Config, err error) {
@@ -37,7 +37,7 @@ func LoadConfig(path string) (config Config, err error) {
 
 func LoadTestConfig(path string) (config TestConfig, err error) {
 	viper.AddConfigPath(path)
-	viper.SetConfigName("app")
+	viper.SetConfigName("test")
 	viper.SetConfigType("env") // can be json, yaml, toml or env
 
 	viper.AutomaticEnv() // read values from environment variables
